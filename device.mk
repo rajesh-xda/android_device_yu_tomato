@@ -17,6 +17,7 @@
 
 # Inherit from msm8916-common
 $(call inherit-product, device/cyanogen/msm8916-common/msm8916.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_k.mk)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
