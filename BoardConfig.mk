@@ -65,6 +65,10 @@ DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
 # Power
 TARGET_POWER_SET_FEATURE_LIB := libpower_set_feature_tomato
 
+# Offline Charging
+BOARD_CHARGER_DISABLE_INIT_BLANK := true
+BOARD_CHARGER_ENABLE_SUSPEND := true
+
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
