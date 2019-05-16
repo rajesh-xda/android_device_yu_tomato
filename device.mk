@@ -199,3 +199,7 @@ PRODUCT_COPY_FILES += \
 
 # Call the proprietary setup
 $(call inherit-product, vendor/yu/tomato/tomato-vendor.mk)
+
+# YUDoze
+PRODUCT_PACKAGES += \
+    YUDoze
