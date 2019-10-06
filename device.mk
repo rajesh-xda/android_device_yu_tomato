@@ -188,10 +188,11 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.usb.id.ums_adb=9015 \
     ro.usb.vid=05c6
 
-# Widevine DRM symbol, boringssl-compat subset
+# Widevine DRM symbol, boringssl-compat subset, imsshims, Binder support symbols
 PRODUCT_PACKAGES += \
     libshims_boringssl \
-    libshims_ims
+    libshims_ims \
+    libshim_binder
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
