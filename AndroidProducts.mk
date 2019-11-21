@@ -15,3 +15,8 @@
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/lineage_tomato.mk
+
+COMMON_LUNCH_CHOICES := \
+    lineage_tomato-user \
+    lineage_tomato-userdebug \
+    lineage_tomato-eng
