@@ -49,7 +49,8 @@ TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
 
 # Init
-TARGET_LIBINIT_MSM8916_DEFINES_FILE := $(DEVICE_PATH)/init/init_tomato.cpp
+TARGET_INIT_VENDOR_LIB := libinit_tomato
+TARGET_RECOVERY_DEVICE_MODULES := libinit_tomato
 
 # Kernel
 BOARD_DTBTOOL_ARGS := -2
