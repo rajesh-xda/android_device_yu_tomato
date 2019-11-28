@@ -197,4 +197,11 @@
          or a single SIM device can have 1 phones/logical modems, but 2 physical slots (one eSIM
          and one pSIM) -->
     <integer name="config_num_physical_slots">2</integer>
+
+    <!-- ImsService package name to bind to by default, if config_dynamic_bind_ims is true -->
+    <string name="config_ims_package">org.codeaurora.ims</string>
+
+    <!-- Flag specifying whether or not IMS will use the ImsResolver dynamically -->
+    <bool name="config_dynamic_bind_ims">true</bool>
+
 </resources>
