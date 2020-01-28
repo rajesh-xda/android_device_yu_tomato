@@ -1,0 +1,2 @@
+allow mediaprovider mnt_media_rw_file:dir r_file_perms;
+

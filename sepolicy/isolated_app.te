@@ -1,0 +1,2 @@
+allow isolated_app app_data_file:file setattr;
+allow isolated_app app_data_file:dir r_file_perms;
