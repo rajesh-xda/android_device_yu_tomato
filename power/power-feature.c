@@ -61,6 +61,6 @@ void set_device_specific_feature(struct power_module *module __unused,
 {
     if (feature == POWER_FEATURE_DOUBLE_TAP_TO_WAKE) {
         sysfs_write(TAP_TO_WAKE_NODE,
-                state ? "1" : "0");
+                state ? "double_click=true" : "double_click=false");
     }
 }
