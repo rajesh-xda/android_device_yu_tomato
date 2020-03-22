@@ -3,3 +3,7 @@ allow init system_file:file execute;
 allow init vendor_file:file write;
 allow init sysfs:file setattr;
 allow init proc:file read;
+allow init proc:file r_file_perms;
+allow init sysfs_leds:lnk_file read;
+allow init system_file:file mounton;
+allow init hal_light_default:file setattr;
