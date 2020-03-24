@@ -1,5 +1,4 @@
-allow webview_zygote baseband_prop:file read;
-allow webview_zygote baseband_prop:file open;
-allow webview_zygote baseband_prop:file getattr;
 allow webview_zygote zygote:unix_dgram_socket write;
 allow webview_zygote app_data_file:dir getattr;
+
+

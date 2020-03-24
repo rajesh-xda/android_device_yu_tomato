@@ -1,4 +1,4 @@
-allow priv_app baseband_prop:file read;
+
 allow priv_app mnt_media_rw_file:dir search;
 allow priv_app sysfs:file read;
 allow priv_app sysfs:file open;

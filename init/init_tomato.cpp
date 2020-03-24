@@ -37,6 +37,8 @@
 #include "util.h"
 
 using android::base::GetProperty;
+
+
 using android::init::property_set;
 using android::init::import_kernel_cmdline;
 static int display_density = 320;
@@ -53,6 +55,7 @@ static void import_cmdline(const std::string& key,
 
 void init_target_properties()
 {
+
     char density[5];
     import_kernel_cmdline(0, import_cmdline);
     snprintf(density, sizeof(density), "%d", display_density);
