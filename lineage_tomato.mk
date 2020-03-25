@@ -21,9 +21,7 @@ $(call inherit-product, vendor/lineage/config/common_mini_phone.mk)
 # Must define platform variant before including any common things
 TARGET_BOARD_PLATFORM_VARIANT := msm8939
 
-#User
-export KBUILD_BUILD_USER=rajesh
-export KBUILD_BUILD_HOST=xda
+
 PRODUCT_NAME := lineage_tomato
 BOARD_VENDOR := yu
 PRODUCT_DEVICE := tomato
