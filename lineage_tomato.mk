@@ -28,7 +28,7 @@ PRODUCT_DEVICE := tomato
 
 # Vendor security patch level
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lineage.build.vendor_security_patch=2019-04-03
+    ro.lineage.build.vendor_security_patch=none
 
 PRODUCT_GMS_CLIENTID_BASE := android-micromax
 
