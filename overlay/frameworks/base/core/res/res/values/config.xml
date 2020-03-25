@@ -123,6 +123,9 @@
         <item>"/system/lib64/libsurfaceflinger.so"</item>
    </string-array>
 
+    <!-- enables button bringhtness -->
+        <bool name="config_deviceHasVariableButtonBrightness">true</bool>
+ 
     <!-- Enable doze mode
          ComponentName of a dream to show whenever the system would otherwise have gone to sleep. -->
     <string name="config_dozeComponent">com.android.systemui/com.android.systemui.doze.DozeService</string>
