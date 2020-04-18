@@ -17,6 +17,7 @@
 #define LOG_TAG "TouchscreenGestureService"
 
 #include <unordered_map>
+#include <string>
 
 #include <android-base/file.h>
 #include <android-base/logging.h>
@@ -41,9 +42,6 @@ const std::unordered_map<int32_t, GestureInfo> kGestureInfoMap = {
     {6, {256, "Letter M", "/sys/devices/virtual/touchscreen/touchscreen_dev/gesture_ctrl"}},
     {7, {253, "Letter O", "/sys/devices/virtual/touchscreen/touchscreen_dev/gesture_ctrl"}},
     {8, {257, "Letter W", "/sys/devices/virtual/touchscreen/touchscreen_dev/gesture_ctrl"}},
-    {9, {260, "Letter S", "/sys/devices/virtual/touchscreen/touchscreen_dev/gesture_ctrl"}},
-    {10, {259, "Letter V", "/sys/devices/virtual/touchscreen/touchscreen_dev/gesture_ctrl"}},
-    {11, {258, "Letter Z", "/sys/devices/virtual/touchscreen/touchscreen_dev/gesture_ctrl"}},
 };
 }  // anonymous namespace
 
@@ -70,8 +68,41 @@ Return<bool> TouchscreenGesture::setGestureEnabled(
     if (entry == kGestureInfoMap.end()) {
         return false;
     }
+    
+    std::string cmd = NULL;
+    switch(entry->second.keycode) {
+        case 254:
+            cmd = "up=";
+            break;
+        case 249:
+            cmd = "down=";
+            break;
+        case 250:
+            cmd = "left=";
+            break;
+        case 251:
+            cmd = "right=";
+            break;
+        case 252:
+            cmd = "c=";
+            break;
+        case 255:
+            cmd = "e=";
+            break;
+        case 256:
+            cmd = "m=";
+            break;
+        case 253:
+            cmd = "o=";
+            break;
+        case 257:
+            cmd = "w=";
+            break;
+        default:
+            cmd = "";
+    }        
 
-    if (!android::base::WriteStringToFile((enabled ? "1" : "0"), entry->second.path)) {
+    if (!android::base::WriteStringToFile((enabled ? cmd + "true" : cmd + "false"), entry->second.path)) {
         LOG(ERROR) << "Wrote file " << entry->second.path << " failed";
         return false;
     }
