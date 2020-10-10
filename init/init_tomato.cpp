@@ -31,20 +31,17 @@
 #include <stdio.h>
 
 #include <android-base/properties.h>
+#define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
+#include <sys/_system_properties.h>
 
-#include "property_service.h"
 #include "vendor_init.h"
 #include "util.h"
 
-using android::base::GetProperty;
-
-
-using android::init::property_set;
-using android::init::import_kernel_cmdline;
+using android::init::ImportKernelCmdline;
 static int display_density = 320;
 
 static void import_cmdline(const std::string& key,
-        const std::string& value, bool for_emulator __attribute__((unused)))
+        const std::string& value)
 {
     if (key.empty()) return;
 
@@ -53,35 +50,46 @@ static void import_cmdline(const std::string& key,
     }
 }
 
+void property_override(char const prop[], char const value[], bool add = true)
+{
+    prop_info *pi;
+
+    pi = (prop_info*) __system_property_find(prop);
+    if (pi)
+        __system_property_update(pi, value, strlen(value));
+    else if (add)
+        __system_property_add(prop, strlen(prop), value, strlen(value));
+}
+
 void init_target_properties()
 {
 
     char density[5];
-    import_kernel_cmdline(0, import_cmdline);
+    ImportKernelCmdline(import_cmdline);
     snprintf(density, sizeof(density), "%d", display_density);
-    property_set("ro.sf.lcd_density", density);
+    property_override("ro.sf.lcd_density", density);
     if (display_density == 480) {
-        property_set("ro.product.model", "YU5510");
-        property_set("dalvik.vm.heapstartsize", "16m");
-        property_set("dalvik.vm.heapgrowthlimit", "192m");
-        property_set("dalvik.vm.heapsize", "512m");
-        property_set("dalvik.vm.heaptargetutilization", "0.75");
-        property_set("dalvik.vm.heapminfree", "2m");
-        property_set("dalvik.vm.heapmaxfree", "8m");
+        property_override("ro.product.model", "YU5510");
+        property_override("dalvik.vm.heapstartsize", "16m");
+        property_override("dalvik.vm.heapgrowthlimit", "192m");
+        property_override("dalvik.vm.heapsize", "512m");
+        property_override("dalvik.vm.heaptargetutilization", "0.75");
+        property_override("dalvik.vm.heapminfree", "2m");
+        property_override("dalvik.vm.heapmaxfree", "8m");
     } else {
-        property_set("ro.product.model", "AO5510");
-        property_set("dalvik.vm.heapstartsize", "8m");
-        property_set("dalvik.vm.heapgrowthlimit", "192m");
-        property_set("dalvik.vm.heapsize", "512m");
-        property_set("dalvik.vm.heaptargetutilization", "0.75");
-        property_set("dalvik.vm.heapminfree", "512k");
-        property_set("dalvik.vm.heapmaxfree", "8m");
+        property_override("ro.product.model", "AO5510");
+        property_override("dalvik.vm.heapstartsize", "8m");
+        property_override("dalvik.vm.heapgrowthlimit", "192m");
+        property_override("dalvik.vm.heapsize", "512m");
+        property_override("dalvik.vm.heaptargetutilization", "0.75");
+        property_override("dalvik.vm.heapminfree", "512k");
+        property_override("dalvik.vm.heapmaxfree", "8m");
     }
 }
 
 void vendor_load_properties()
 {
     // Init a dummy BT MAC address, will be overwritten later
-    property_set("ro.boot.btmacaddr", "00:00:00:00:00:00");
+    property_override("ro.boot.btmacaddr", "00:00:00:00:00:00");
     init_target_properties();
 }
