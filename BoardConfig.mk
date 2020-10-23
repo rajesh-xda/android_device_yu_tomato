@@ -61,7 +61,7 @@ TARGET_KERNEL_CONFIG := lineageos_tomato_defconfig
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
 
 # Power
-TARGET_TAP_TO_WAKE_NODE := "/sys/devices/virtual/touchscreen/touchscreen_dev/gesture_ctrl"
+TARGET_POWER_SET_FEATURE_LIB := libpower_set_feature_tomato
 
 # Offline Charging
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
