@@ -68,4 +68,11 @@
          to 75. -->
     <integer name="config_deviceLightCapabilities">75</integer>
 
+    <!-- Button backlight control. Possible values are:
+            0 - Not supported
+            1 - Supported, but only on/off mode
+            2 - Supported with variable brightness control
+    -->
+    <integer name="config_deviceSupportsButtonBrightnessControl">2</integer>
+
 </resources>
