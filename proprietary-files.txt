@@ -5,23 +5,36 @@ vendor/lib/libadsprpc.so
 vendor/lib/libfastcvopt.so
 
 # Audio
-vendor/lib64/libacdb-fts.so
-vendor/lib64/libacdbloader.so
-vendor/lib64/libacdbrtac.so
-vendor/lib64/libadiertac.so
-vendor/lib64/libaudcal.so
-vendor/lib64/libFlacSwDec.so
-vendor/lib/libacdb-fts.so
-vendor/lib/libacdbloader.so
-vendor/lib/libacdbrtac.so
-vendor/lib/libadiertac.so
-vendor/lib/libaudcal.so
-vendor/lib/libFlacSwDec.so
 vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
 vendor/lib/libaptX_encoder.so
 vendor/lib64/libaptX_encoder.so
+
+# Audio - from LA.BR.1.2.9.1-02310-8x16.0
+vendor/lib/libacdb-fts.so|6208304e3a0448ead0765c13a8357e961a7d6115
+vendor/lib/libacdbloader.so|645a15c35e9dd44979d0e4ae638df7552f2beb42
+vendor/lib/libacdbmapper.so|4c259dea1c7ec82b3f61bcc161d090c7a5a9ae43
+vendor/lib/libacdbrtac.so|945d8125ee8b891abc290566ccd9254d680cdb24
+vendor/lib/libadiertac.so|47ac4f936f08314def85ed3323e0885a95c5e7cb
+vendor/lib/libadm.so|eeb842bfa8ce22eb296a9f159f2aa51c4bad295d
+vendor/lib/libaudcal.so|4e85faf66c75d58df1adabe9e73fbc1ae1c741ba
+vendor/lib/libFlacSwDec.so|e174ff678fbb4a770729e39cc8c7f46a5465bd5b
+vendor/lib/libaudioalsa.so|a0170e763a7875f06de42ee90b887be6a9bb192a
+vendor/lib/libaudioparsers.so|983bde66f03ef8da09cacb4c090c595ce76ac68e
+vendor/lib/libdrc.so|ef06fb45092295f75d4d60cf95524d5d73bb211a
+vendor/lib/libsurround_3mic_proc.so|aba1c327c78ca00763302ac79413021af22570fa
+vendor/lib/libtinycompress_vendor.so|e5e1178e86a54d15ae23a37d7979622bd1a38d27
+vendor/lib64/libacdb-fts.so|e2beb18a44854b09dd3c74963e17ea9366e9406b
+vendor/lib64/libacdbloader.so|f548da1e1f62f11c24832a7f925fe0d21116563d
+vendor/lib64/libacdbmapper.so|2a8b8f65e764b2336a3cdafb42a01ea6264ffd2e
+vendor/lib64/libacdbrtac.so|584d2811d6ef6bd08c13de772a93c022c8873e14
+vendor/lib64/libadiertac.so|496d4361898330a53ca50da1404e85d82f021ab9
+vendor/lib64/libaudcal.so|4ba679e548faf52b34f2bbe287121304c3886df6
+vendor/lib64/libFlacSwDec.so|1cd406bac8586759037dce4a6425ec89e6c9ad1e
+vendor/lib64/libaudioalsa.so|e0c80f38802cfd6cc74352a108040ff5f165614b
+vendor/lib64/libaudioparsers.so|a3e520d2a56a2aacae8c128f4404a298556a0827
+vendor/lib64/libtinycompress_vendor.so|72ff64aae36d647dadd4b141807c6e8bfb586013
 
 # Bluetooth
 bin/hci_qcomm_init:vendor/bin/hci_qcomm_init
