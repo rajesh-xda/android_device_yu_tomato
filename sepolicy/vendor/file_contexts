@@ -21,7 +21,8 @@
 # sysfs files
 /sys/devices/virtual/block/zram\d+(/.*)?                                               u:object_r:sysfs_zram:s0
 
-
+#perf hal
+/(vendor|system/vendor)/bin/hw/vendor\.qti\.hardware\.perf@2\.0-service       u:object_r:hal_perf_default_exec:s0
 
 
 
