@@ -8,6 +8,14 @@ persist.vendor.audio.fluence.speaker=false
 persist.camera.cpp.duplication=false
 persist.camera.hal.debug.mask=0
 
+# LMKD
+ro.lmk.critical_upgrade=true
+ro.lmk.downgrade_pressure=60
+ro.lmk.kill_heaviest_task=false
+ro.lmk.log_stats=true
+ro.lmk.upgrade_pressure=40
+ro.lmk.use_psi=false
+
 # Radio
 persist.data.target=dpm1
 persist.radio.multisim.config=dsds
