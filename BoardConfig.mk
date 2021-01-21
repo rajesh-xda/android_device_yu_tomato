@@ -66,9 +66,6 @@ BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 # HIDL
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
 
-# LMKD stats logging
-TARGET_LMKD_STATS_LOG := true
-
 # Power
 TARGET_POWER_SET_FEATURE_LIB := libpower_set_feature_tomato
 
