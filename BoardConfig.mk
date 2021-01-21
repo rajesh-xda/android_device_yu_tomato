@@ -63,9 +63,6 @@ TARGET_KERNEL_CONFIG := lineageos_tomato_defconfig
 # HIDL
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
 
-# LMKD stats logging
-TARGET_LMKD_STATS_LOG := true
-
 # Power
 TARGET_POWERHAL_MODE_EXT := $(DEVICE_PATH)/power/power-mode.cpp
 

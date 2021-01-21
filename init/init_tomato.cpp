@@ -70,16 +70,16 @@ void init_target_properties()
     if (display_density == 480) {
         property_override("ro.product.model", "YU5510");
         property_override("dalvik.vm.heapstartsize", "16m");
-        property_override("dalvik.vm.heapgrowthlimit", "192m");
-        property_override("dalvik.vm.heapsize", "512m");
+        property_override("dalvik.vm.heapgrowthlimit", "128m");
+        property_override("dalvik.vm.heapsize", "256m");
         property_override("dalvik.vm.heaptargetutilization", "0.75");
         property_override("dalvik.vm.heapminfree", "2m");
         property_override("dalvik.vm.heapmaxfree", "8m");
     } else {
         property_override("ro.product.model", "AO5510");
         property_override("dalvik.vm.heapstartsize", "8m");
-        property_override("dalvik.vm.heapgrowthlimit", "192m");
-        property_override("dalvik.vm.heapsize", "512m");
+        property_override("dalvik.vm.heapgrowthlimit", "128m");
+        property_override("dalvik.vm.heapsize", "256m");
         property_override("dalvik.vm.heaptargetutilization", "0.75");
         property_override("dalvik.vm.heapminfree", "512k");
         property_override("dalvik.vm.heapmaxfree", "8m");
