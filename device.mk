@@ -58,7 +58,6 @@ TARGET_SCREEN_WIDTH := 720
 # Camera
 PRODUCT_PACKAGES += \
     camera.msm8916 \
-    libmm-qcamera \
     Snap
 
 PRODUCT_PACKAGES += \
