@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 The LineageOS Project
+ * Copyright (C) 2019,2021 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,13 +14,15 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "KeyDisablerService"
-
 #include <android-base/file.h>
 #include <android-base/logging.h>
 #include <android-base/strings.h>
 
 #include "KeyDisabler.h"
+
+namespace {
+constexpr const char kControlPath[] = "/sys/devices/soc.0/78b9000.i2c/i2c-5/5-005d/keypad_enable";
+};  // anonymous namespace
 
 namespace vendor {
 namespace lineage {
@@ -28,23 +30,25 @@ namespace touch {
 namespace V1_0 {
 namespace implementation {
 
-constexpr const char kControlPath[] =
-        "/sys/devices/soc.0/78b9000.i2c/i2c-5/5-005d/keypad_enable";
+KeyDisabler::KeyDisabler() : has_key_disabler_(!access(kControlPath, R_OK | W_OK)) {}
 
 // Methods from ::vendor::lineage::touch::V1_0::IKeyDisabler follow.
 Return<bool> KeyDisabler::isEnabled() {
-    std::string buf;
+    if (!has_key_disabler_) return false;
 
+    std::string buf;
     if (!android::base::ReadFileToString(kControlPath, &buf)) {
         LOG(ERROR) << "Failed to read " << kControlPath;
         return false;
     }
 
-    return std::stoi(android::base::Trim(buf)) == 0;
+    return std::stoi(android::base::Trim(buf)) == 1;
 }
 
 Return<bool> KeyDisabler::setEnabled(bool enabled) {
-    if (!android::base::WriteStringToFile((enabled ? "0" : "1"), kControlPath)) {
+    if (!has_key_disabler_) return false;
+
+    if (!android::base::WriteStringToFile(std::to_string(enabled), kControlPath)) {
         LOG(ERROR) << "Failed to write " << kControlPath;
         return false;
     }

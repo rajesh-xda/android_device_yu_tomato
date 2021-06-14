@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 The LineageOS Project
+ * Copyright (C) 2021 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef VENDOR_LINEAGE_TOUCH_V1_0_KEYDISABLER_H
-#define VENDOR_LINEAGE_TOUCH_V1_0_KEYDISABLER_H
+#pragma once
 
-#include <hidl/MQDescriptor.h>
-#include <hidl/Status.h>
 #include <vendor/lineage/touch/1.0/IKeyDisabler.h>
 
 namespace vendor {
@@ -28,14 +25,16 @@ namespace V1_0 {
 namespace implementation {
 
 using ::android::hardware::Return;
-using ::android::hardware::Void;
-using ::android::sp;
 
 class KeyDisabler : public IKeyDisabler {
   public:
+    KeyDisabler();
     // Methods from ::vendor::lineage::touch::V1_0::IKeyDisabler follow.
     Return<bool> isEnabled() override;
     Return<bool> setEnabled(bool enabled) override;
+
+  private:
+    const bool has_key_disabler_;
 };
 
 }  // namespace implementation
@@ -43,5 +42,3 @@ class KeyDisabler : public IKeyDisabler {
 }  // namespace touch
 }  // namespace lineage
 }  // namespace vendor
-
-#endif  // VENDOR_LINEAGE_TOUCH_V1_0_KEYDISABLER_H

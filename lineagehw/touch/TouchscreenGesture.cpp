@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 The LineageOS Project
+ * Copyright (C) 2019,2021 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -65,13 +65,13 @@ Return<void> TouchscreenGesture::getSupportedGestures(getSupportedGestures_cb re
 }
 
 Return<bool> TouchscreenGesture::setGestureEnabled(
-    const ::vendor::lineage::touch::V1_0::Gesture& gesture, bool enabled) {
+        const ::vendor::lineage::touch::V1_0::Gesture& gesture, bool enabled) {
     const auto entry = kGestureInfoMap.find(gesture.id);
     if (entry == kGestureInfoMap.end()) {
         return false;
     }
 
-    if (!android::base::WriteStringToFile((enabled ? "1" : "0"), entry->second.path)) {
+    if (!android::base::WriteStringToFile(std::to_string(enabled), entry->second.path)) {
         LOG(ERROR) << "Wrote file " << entry->second.path << " failed";
         return false;
     }

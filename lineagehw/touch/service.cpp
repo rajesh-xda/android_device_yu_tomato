@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 The LineageOS Project
+ * Copyright (C) 2019,2021 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 #define LOG_TAG "vendor.lineage.touch@1.0-service.tomato"
 
 #include <android-base/logging.h>
-#include <binder/ProcessState.h>
 #include <hidl/HidlTransportSupport.h>
 
 #include "KeyDisabler.h"
@@ -32,17 +31,17 @@ using ::vendor::lineage::touch::V1_0::implementation::KeyDisabler;
 using ::vendor::lineage::touch::V1_0::implementation::TouchscreenGesture;
 
 int main() {
-    sp<ITouchscreenGesture> gestureService = new TouchscreenGesture();
-    sp<IKeyDisabler> keyDisabler = new KeyDisabler();
+    sp<ITouchscreenGesture> gesture_service = new TouchscreenGesture();
+    sp<IKeyDisabler> key_disabler = new KeyDisabler();
 
     android::hardware::configureRpcThreadpool(1, true /*callerWillJoin*/);
 
-    if (gestureService->registerAsService() != OK) {
+    if (gesture_service->registerAsService() != OK) {
         LOG(ERROR) << "Cannot register touchscreen gesture HAL service.";
         return 1;
     }
 
-    if (keyDisabler->registerAsService() != OK) {
+    if (key_disabler->registerAsService() != OK) {
         LOG(ERROR) << "Cannot register keydisabler HAL service.";
         return 1;
     }
