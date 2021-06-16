@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019,2021 The LineageOS Project
+ * Copyright (C) 2019 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,21 +16,16 @@
 
 #define LOG_TAG "TouchscreenGestureService"
 
-#include <unordered_map>
-
-#include <android-base/file.h>
-#include <android-base/logging.h>
-
 #include "TouchscreenGesture.h"
+#include <android-base/logging.h>
+#include <fstream>
 
-namespace {
-typedef struct {
-    int32_t keycode;
-    const char* name;
-    const char* path;
-} GestureInfo;
+namespace vendor {
+namespace lineage {
+namespace touch {
+namespace V1_0 {
+namespace implementation {
 
-// id -> info
 const std::unordered_map<int32_t, GestureInfo> kGestureInfoMap = {
     {0, {254, "One finger up swipe", "/sys/devices/virtual/touchscreen/touchscreen_dev/gesture_ctrl"}},
     {1, {249, "One finger down swipe", "/sys/devices/virtual/touchscreen/touchscreen_dev/gesture_ctrl"}},
@@ -45,13 +40,6 @@ const std::unordered_map<int32_t, GestureInfo> kGestureInfoMap = {
     {10, {259, "Letter V", "/sys/devices/virtual/touchscreen/touchscreen_dev/gesture_ctrl"}},
     {11, {258, "Letter Z", "/sys/devices/virtual/touchscreen/touchscreen_dev/gesture_ctrl"}},
 };
-}  // anonymous namespace
-
-namespace vendor {
-namespace lineage {
-namespace touch {
-namespace V1_0 {
-namespace implementation {
 
 Return<void> TouchscreenGesture::getSupportedGestures(getSupportedGestures_cb resultCb) {
     std::vector<Gesture> gestures;
@@ -65,17 +53,16 @@ Return<void> TouchscreenGesture::getSupportedGestures(getSupportedGestures_cb re
 }
 
 Return<bool> TouchscreenGesture::setGestureEnabled(
-        const ::vendor::lineage::touch::V1_0::Gesture& gesture, bool enabled) {
+    const ::vendor::lineage::touch::V1_0::Gesture& gesture, bool enabled) {
     const auto entry = kGestureInfoMap.find(gesture.id);
     if (entry == kGestureInfoMap.end()) {
         return false;
     }
 
-    if (!android::base::WriteStringToFile(std::to_string(enabled), entry->second.path)) {
-        LOG(ERROR) << "Wrote file " << entry->second.path << " failed";
-        return false;
-    }
-    return true;
+    std::ofstream file(entry->second.path);
+    file << (enabled ? "1" : "0");
+    LOG(DEBUG) << "Wrote file " << entry->second.path << " fail " << file.fail();
+    return !file.fail();
 }
 
 }  // namespace implementation
