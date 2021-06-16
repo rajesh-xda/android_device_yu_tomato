@@ -59,7 +59,8 @@ TARGET_SCREEN_WIDTH := 720
 # Camera
 PRODUCT_PACKAGES += \
     camera.msm8916 \
-    Snap
+    Snap \
+    Recorder
 
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl 
