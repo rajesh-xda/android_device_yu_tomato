@@ -1,0 +1,2 @@
+allow zygote bluetooth_prop:file read;
+allow zygote exported_camera_prop:file read;
