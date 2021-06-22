@@ -1,1 +1,3 @@
 allow vold sysfs_zram:file write;
+allow vold cache_block_device:blk_file getattr;
+allow vold hal_bootctl_hwservice:hwservice_manager find;
