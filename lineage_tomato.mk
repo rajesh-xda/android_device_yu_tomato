@@ -38,7 +38,3 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_DEVICE=YUREKA
 
 BUILD_FINGERPRINT := YU/YUREKA/YUREKA:5.1.1/LMY49J/YOG4PAS8A4:user/release-keys
-
-# Lineage Updater
-PRODUCT_PROPERTY_OVERRIDES += \
-    lineage.updater.uri=https://raw.githubusercontent.com/eErenYeager/los_ota/master/ota.json
