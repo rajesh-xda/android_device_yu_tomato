@@ -196,7 +196,6 @@ PRODUCT_PACKAGES += \
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
-    libwcnss_qmi \
     libwpa_client
 
 PRODUCT_COPY_FILES += \
